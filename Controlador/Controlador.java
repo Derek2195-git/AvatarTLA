@@ -4,6 +4,7 @@ import Modelo.*;
 import Vista.Vista;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Controlador {
@@ -40,6 +41,16 @@ public class Controlador {
                     String nombrePersonaje = vista.leerCadena();
                     atacarConUnPersonaje(nombrePersonaje);
                 }
+                case 6 -> {
+                    vista.mostrarCadena("Escribe el nombre del personaje");
+                    String nombrePersonaje = vista.leerCadena();
+                    Personaje personajeEncontrado = buscarPersonaje(nombrePersonaje);
+                    if (personajeEncontrado != null) {
+                        vista.mostrarCadena(personajeEncontrado.toString());
+                    } else {
+                        vista.mostrarCadena("No se encontró ningun personaje con el nombre " + nombrePersonaje);
+                    }
+                }
                 default -> vista.mostrarCadena("Opción no valida, ingresala de nuevo.");
             }
         } while(opcion != 2);
@@ -55,18 +66,23 @@ public class Controlador {
             vista.mostrarCadena("El nombre no puede contener numeros");
             return;
         }
+        if (buscarPersonaje(nombre) != null) {
+            vista.mostrarCadena("Ya existe un personaje con ese nombre, prueba con otro.");
+            return;
+        }
         vista.mostrarCadena("¿Cual es la nación del personaje?");
-        if (nombre.matches(".*\\d.*")) {
+       String nacion = vista.leerCadena();
+        if (nacion.matches(".*\\d.*")) {
             vista.mostrarCadena("La nación no puede contener numeros");
             return;
         }
-        String nacion = vista.leerCadena();
+
         vista.mostrarCadena("¿Cual es el genero del personaje?");
-        if (nombre.matches(".*\\d.*")) {
+        String genero = vista.leerCadena();
+        if (genero.matches(".*\\d.*")) {
             vista.mostrarCadena("El genero no puede contener numeros");
             return;
         }
-        String genero = vista.leerCadena();
 
         vista.mostrarCadena("¿Cual es la edad del personaje?");
         int edad = vista.leerNumeroEntero();
@@ -239,18 +255,12 @@ public class Controlador {
     }
 
     public void atacarConUnPersonaje(String nombrePersonaje) {
-        Personaje personajeAEncontrar = null;
-        for (Personaje personajeActual : personajes) {
-            if (personajeActual.getNombre().equalsIgnoreCase(nombrePersonaje)) {
-                personajeAEncontrar = personajeActual;
-                break;
-            }
-        }
-
+        Personaje personajeAEncontrar = buscarPersonaje(nombrePersonaje);
         if (personajeAEncontrar == null) {
             vista.mostrarCadena("No se encontró ningun personaje con el nombre " + nombrePersonaje);
             return;
         }
+
 
         if (personajeAEncontrar instanceof MaestroUnElemento maestro) {
             try {
@@ -271,5 +281,19 @@ public class Controlador {
                 vista.mostrarCadena(e.getMessage());
             }
         }
+    }
+
+    public Personaje buscarPersonaje(String nombrePersonaje) {
+        Personaje personajeABuscar = null;
+        for (Personaje personajeActual : personajes) {
+            if (personajeActual.getNombre().equalsIgnoreCase(nombrePersonaje)) {
+                personajeABuscar = personajeActual;
+                return personajeABuscar;
+            }
+        }
+
+
+        return personajeABuscar;
+
     }
 }

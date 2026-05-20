@@ -16,6 +16,7 @@ public class Vista {
         System.out.println("3. Cargar datos de un archivo de texto");
         System.out.println("4. Mostrar personajes");
         System.out.println("5. Hacer que un personaje ataque");
+        System.out.println("6. Buscar un personaje a partir de su nombre");
     }
 
     public void mostrarCadena(String mensaje) {
@@ -46,4 +47,6 @@ public class Vista {
     public void mostrarPersonajes(ArrayList<Personaje> personajes) {
         personajes.forEach(System.out::println);
     }
+
+
 }
