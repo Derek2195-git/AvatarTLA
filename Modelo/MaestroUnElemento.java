@@ -31,4 +31,15 @@ public abstract class MaestroUnElemento extends Personaje {
     public int getNivelDeDominio() {
         return nivelDeDominio;
     }
+
+    @Override
+    public String toString() {
+        return  "Maestro de un elemento" + "\n" +
+                "Nombre:" + nombre + "\n" +
+                "Nacion: " + nacion + "\n" +
+                "Genero: " + genero + "\n" +
+                "Edad: " + edad + "\n" +
+                "¿Esta vivo? " + (estaVivo ? "Si" : "No")  + "\n" +
+                "Energia: " + energia + "\n";
+    }
 }

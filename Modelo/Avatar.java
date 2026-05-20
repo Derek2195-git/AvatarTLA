@@ -82,4 +82,15 @@ public class Avatar extends Personaje implements MaestroFuego, MaestroAgua, Maes
     public void crearEscudoPiedra() {
         System.out.println("Concentración para crear un escudo a partir de rocas");
     }
+
+    @Override
+    public String toString() {
+        return  "Avatar" + "\n" +
+                "Nombre:" + nombre + "\n" +
+                "Nacion: " + nacion + "\n" +
+                "Genero: " + genero + "\n" +
+                "Edad: " + edad + "\n" +
+                "¿Esta vivo? " + (estaVivo ? "Si" : "No")  + "\n" +
+                "Energia: " + energia + "\n";
+    }
 }

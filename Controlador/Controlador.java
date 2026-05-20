@@ -51,10 +51,23 @@ public class Controlador {
         int tipo = vista.leerNumeroEntero();
         vista.mostrarCadena("¿Cual es el nombre del personaje?");
         String nombre = vista.leerCadena();
+        if (nombre.matches(".*\\d.*")) {
+            vista.mostrarCadena("El nombre no puede contener numeros");
+            return;
+        }
         vista.mostrarCadena("¿Cual es la nación del personaje?");
+        if (nombre.matches(".*\\d.*")) {
+            vista.mostrarCadena("La nación no puede contener numeros");
+            return;
+        }
         String nacion = vista.leerCadena();
         vista.mostrarCadena("¿Cual es el genero del personaje?");
+        if (nombre.matches(".*\\d.*")) {
+            vista.mostrarCadena("El genero no puede contener numeros");
+            return;
+        }
         String genero = vista.leerCadena();
+
         vista.mostrarCadena("¿Cual es la edad del personaje?");
         int edad = vista.leerNumeroEntero();
         if (edad < 0) {
