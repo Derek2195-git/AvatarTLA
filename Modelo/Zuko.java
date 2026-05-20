@@ -3,7 +3,7 @@ package Modelo;
 public class Zuko extends MaestroUnElemento implements MaestroFuego {
 
     public Zuko() {
-        super("Zuko", "Fuego", "Hombre", 13, true, 5);
+        super("Zuko", "Fuego", "Hombre", 13, true, 5, 70);
     }
 
     @Override
@@ -12,8 +12,12 @@ public class Zuko extends MaestroUnElemento implements MaestroFuego {
     }
 
     @Override
-    public void atacar() {
+    public void atacar() throws EnergiaInsuficienteException {
+        if (energia < 10) {
+            throw new EnergiaInsuficienteException();
+        }
         System.out.println(nombre + "ataca");
+        energia -= 10;
     }
 
     @Override
@@ -23,6 +27,6 @@ public class Zuko extends MaestroUnElemento implements MaestroFuego {
 
     @Override
     public void alientoFuego() {
-
+        System.out.println("Concentracion para poder lanzar fuego por la boca");
     }
 }

@@ -6,14 +6,16 @@ public class Personaje {
     protected String genero;
     protected int edad;
     protected boolean estaVivo;
+    protected int energia;
 
 
-    public Personaje(String nombre, String nacion, String genero, int edad, boolean estaVivo) {
+    public Personaje(String nombre, String nacion, String genero, int edad, boolean estaVivo, int energia) {
         this.nombre = nombre;
         this.nacion = nacion;
         this.genero = genero;
         this.edad = edad;
         this.estaVivo = estaVivo;
+        this.energia = energia;
     }
 
     public Personaje() {
@@ -44,6 +46,10 @@ public class Personaje {
         return estaVivo;
     }
 
+    public int getEnergia() {
+        return energia;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -52,7 +58,7 @@ public class Personaje {
         this.nacion = nacion;
     }
 
-    public void getGenero(String genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -63,6 +69,8 @@ public class Personaje {
     public void setVivo(boolean estaVivo) {
         this.estaVivo = estaVivo;
     }
+
+    public void setEnergia(int energia) { this.energia = energia; }
 
     public void presentarse() {
         System.out.println(nombre + " " + nacion);

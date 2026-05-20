@@ -2,13 +2,17 @@ package Modelo;
 
 public class Katara extends MaestroUnElemento implements MaestroAgua {
     public Katara() {
-        super("Katara", "Agua", "Mujer", 12, true, 4);
+        super("Katara", "Agua", "Mujer", 12, true, 4, 70);
 
     }
 
     @Override
-    public void atacar() {
+    public void atacar() throws EnergiaInsuficienteException {
+        if (energia < 10) {
+            throw new EnergiaInsuficienteException();
+        }
         System.out.println(nombre + "ataca");
+        energia -= 10;
     }
 
     @Override
