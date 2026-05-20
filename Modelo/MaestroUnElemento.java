@@ -14,6 +14,10 @@ public abstract class MaestroUnElemento extends Personaje {
         nivelDeDominio = 1;
     }
 
+    /**
+     * Metodo que permite a un maestro atacar
+     * @throws EnergiaInsuficienteException En caso de que no haya suficiente energia, se arroja una excepcion
+     */
     public abstract void atacar() throws EnergiaInsuficienteException;
 
     public void incrementarNivelDominio() {

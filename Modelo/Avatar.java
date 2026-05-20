@@ -2,6 +2,9 @@ package Modelo;
 
 public class Avatar extends Personaje implements MaestroFuego, MaestroAgua, MaestroAire, MaestroTierra {
 
+    /**
+     * El constructor vacio del Avatar crea a Aang
+     */
     public Avatar() {
         super("Aang", "Nomada", "Hombre", 12, true, 9);
     }

@@ -1,11 +1,22 @@
 package Modelo;
 
 public class CiudadanoAgua extends MaestroUnElemento implements MaestroAgua {
+    /**
+     * El constructor vacio del maestro crea a Katara
+     */
     public CiudadanoAgua() {
         super("Katara", "Agua", "Mujer", 12, true, 4, 70);
 
     }
-
+    /**
+     * Constructor del personaje
+     * @param nombre Nombre del maestro
+     * @param nacion Nacion de donde proviene el maestro
+     * @param genero Genero del maestro (Si es hombre o mujer)
+     * @param edad Edad del maestro
+     * @param nivelDominio Nivel de dominio de un elemento que posee el maestro
+     * @param energia Energia actual del maestro
+     */
     public CiudadanoAgua(String nombre, String nacion, String genero, int edad, int nivelDominio, int energia) {
         super(nombre, nacion, genero, edad, true, nivelDominio, energia);
     }
