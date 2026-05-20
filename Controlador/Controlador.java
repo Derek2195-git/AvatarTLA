@@ -4,20 +4,25 @@ import Modelo.*;
 import Vista.Vista;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Controlador {
     private Vista vista;
     private ArrayList<Personaje> personajes;
 
+    /**
+     * Constructor del controlador, solamente inicializamos la vista
+     */
     public Controlador() {
         this.vista = new Vista();
         this.personajes = new ArrayList<>();
     }
 
+    /**
+     * Inicializa el menú, conectandose con la vista y el modelo.
+     */
     public void iniciar() {
-        int opcion = 0;
+        int opcion;
 
         do {
             vista.mostrarMenu();
@@ -56,6 +61,9 @@ public class Controlador {
         } while(opcion != 2);
     }
 
+    /**
+     * Crea un personaje y lo mete a un ArrayList de personajes
+     */
     public void crearPersonaje() {
         vista.mostrarCadena("¿Que tipo de personaje quieres crear? Elige una opción.");
         vista.mostrarCadena("1. Maestro \n2. Guerrero");
@@ -140,9 +148,13 @@ public class Controlador {
 
     }
 
+    /**
+     * Guarda los personajes del ArrayList de personajes a un archivo de texto
+     * @param rutaArchivo Ruta del archivo en donde se guardará
+     */
     public void guardarPersonajes(String rutaArchivo) {
         try (
-                BufferedWriter escritor = new BufferedWriter(new FileWriter(rutaArchivo))
+                BufferedWriter escritor = new BufferedWriter(new FileWriter(rutaArchivo, true))
         ) {
             for (Personaje personajeActual : personajes) {
                 if (personajeActual instanceof MaestroUnElemento maestro) {
@@ -176,6 +188,10 @@ public class Controlador {
         }
     }
 
+    /**
+     * Abre un archivo de texto y carga los datos que haya en este para convertirlos en personajes
+     * @param rutaArchivo Ruta del archivo donde se va a mover
+     */
     public void abrirArchivoPersonajes(String rutaArchivo) {
         try (BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo))){
             String linea;
@@ -249,11 +265,18 @@ public class Controlador {
 
     }
 
+    /**
+     * Muestra los personajes que hay dentro del ArrayList de personajes
+     */
     public void mostrarPersonajesCreados() {
         if (personajes.isEmpty()) vista.mostrarCadena("No hay personajes cargados");
         else vista.mostrarPersonajes(personajes);
     }
 
+    /**
+     * Hace que un personaje ataque, esta función se usó para probar el codigo de ataque de cada personaje
+     * @param nombrePersonaje Nombre del personaje que queremos que ataque, necesita estar dentro del ArrayList de personajes
+     */
     public void atacarConUnPersonaje(String nombrePersonaje) {
         Personaje personajeAEncontrar = buscarPersonaje(nombrePersonaje);
         if (personajeAEncontrar == null) {
@@ -283,6 +306,11 @@ public class Controlador {
         }
     }
 
+    /**
+     * Busca un personaje en el ArrayList de personajes y muestra su información
+     * @param nombrePersonaje Nombre del personaje a buscar dentro del ArrayList de personajes
+     * @return Instancia del personaje encontrado, si no se encontró, se regresa un null
+     */
     public Personaje buscarPersonaje(String nombrePersonaje) {
         Personaje personajeABuscar = null;
         for (Personaje personajeActual : personajes) {
@@ -291,7 +319,6 @@ public class Controlador {
                 return personajeABuscar;
             }
         }
-
 
         return personajeABuscar;
 
