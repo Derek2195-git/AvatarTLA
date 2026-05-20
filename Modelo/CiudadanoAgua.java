@@ -15,7 +15,7 @@ public class CiudadanoAgua extends MaestroUnElemento implements MaestroAgua {
         if (energia < 10) {
             throw new EnergiaInsuficienteException();
         }
-        System.out.println(nombre + "ataca");
+        System.out.println(nombre + " ataca usando su dominio del agua!");
         energia -= 10;
     }
 

@@ -75,4 +75,20 @@ public class Personaje {
     public void presentarse() {
         System.out.println(nombre + " " + nacion);
     }
+
+    // protected String nombre;
+    //    protected String nacion;
+    //    protected String genero;
+    //    protected int edad;
+    //    protected boolean estaVivo;
+    //    protected int energia;
+    @Override
+    public String toString() {
+        return  "Nombre:" + nombre + "\n" +
+                "Nacion: " + nacion + "\n" +
+                "Genero: " + genero + "\n" +
+                "Edad: " + edad + "\n" +
+                "¿Esta vivo? " + (estaVivo ? "Si" : "No")  + "\n" +
+                "Energia: " + energia + "\n";
+    }
 }

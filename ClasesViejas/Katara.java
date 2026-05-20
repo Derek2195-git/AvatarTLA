@@ -1,4 +1,8 @@
-package Modelo;
+package ClasesViejas;
+
+import Modelo.EnergiaInsuficienteException;
+import Modelo.MaestroAgua;
+import Modelo.MaestroUnElemento;
 
 public class Katara extends MaestroUnElemento implements MaestroAgua {
     public Katara() {

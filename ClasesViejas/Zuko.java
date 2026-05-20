@@ -1,4 +1,8 @@
-package Modelo;
+package ClasesViejas;
+
+import Modelo.EnergiaInsuficienteException;
+import Modelo.MaestroFuego;
+import Modelo.MaestroUnElemento;
 
 public class Zuko extends MaestroUnElemento implements MaestroFuego {
 

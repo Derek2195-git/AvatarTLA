@@ -30,7 +30,7 @@ public class CiudadanoViento extends MaestroUnElemento implements MaestroAire {
         if (energia < 10) {
             throw new EnergiaInsuficienteException();
         }
-        System.out.println(nombre + "ataca");
+        System.out.println(nombre + " ataca usando su dominio del aire!");
         energia -= 10;
     }
 }

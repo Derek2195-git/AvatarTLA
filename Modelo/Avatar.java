@@ -1,9 +1,21 @@
 package Modelo;
 
-public class Aang extends Personaje implements MaestroFuego, MaestroAgua, MaestroAire, MaestroTierra{
+public class Avatar extends Personaje implements MaestroFuego, MaestroAgua, MaestroAire, MaestroTierra {
 
-    public Aang() {
-        super("Aang","Nomada", "Hombre", 12, true, 9);
+    public Avatar() {
+        super("Aang", "Nomada", "Hombre", 12, true, 9);
+    }
+
+    public Avatar(String nombre, String nacion, String genero, int edad, int energia) {
+        super(nombre, nacion, genero, edad, true, energia);
+    }
+
+    public void atacar() throws EnergiaInsuficienteException {
+        if (energia < 10) {
+            throw new EnergiaInsuficienteException();
+        }
+        System.out.println(nombre + " ataca con su dominio de los 4 elementos!");
+        energia -= 10;
     }
 
     @Override
@@ -70,5 +82,4 @@ public class Aang extends Personaje implements MaestroFuego, MaestroAgua, Maestr
     public void crearEscudoPiedra() {
         System.out.println("Concentración para crear un escudo a partir de rocas");
     }
-
 }

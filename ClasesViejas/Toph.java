@@ -1,4 +1,8 @@
-package Modelo;
+package ClasesViejas;
+
+import Modelo.EnergiaInsuficienteException;
+import Modelo.MaestroTierra;
+import Modelo.MaestroUnElemento;
 
 public class Toph extends MaestroUnElemento implements MaestroTierra {
 

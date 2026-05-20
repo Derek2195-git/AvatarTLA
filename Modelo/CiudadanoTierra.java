@@ -20,7 +20,7 @@ public class CiudadanoTierra extends MaestroUnElemento implements MaestroTierra{
         if (energia < 10) {
             throw new EnergiaInsuficienteException();
         }
-        System.out.println(nombre + "ataca");
+        System.out.println(nombre + " ataca usando su dominio de la tierra!");
         energia -= 10;
     }
 

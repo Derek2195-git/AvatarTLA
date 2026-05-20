@@ -1,9 +1,10 @@
-package Modelo;
+package ClasesViejas;
+
+import Modelo.Personaje;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
-public class Sokka extends Personaje{
+public class Sokka extends Personaje {
     private ArrayList<String> habilidades;
     public Sokka() {
         super("Sokka", "Agua", "Hombre", 12, true, 0);
