@@ -10,17 +10,11 @@ public class Controlador {
     private Vista vista;
     private ArrayList<Personaje> personajes;
 
-    /**
-     * Constructor del controlador, solamente inicializamos la vista
-     */
     public Controlador() {
         this.vista = new Vista();
         this.personajes = new ArrayList<>();
     }
 
-    /**
-     * Inicializa el menú, conectandose con la vista y el modelo.
-     */
     public void iniciar() {
         int opcion;
 
@@ -61,9 +55,6 @@ public class Controlador {
         } while(opcion != 2);
     }
 
-    /**
-     * Crea un personaje y lo mete a un ArrayList de personajes
-     */
     public void crearPersonaje() {
         vista.mostrarCadena("¿Que tipo de personaje quieres crear? Elige una opción.");
         vista.mostrarCadena("1. Maestro \n2. Guerrero");
@@ -127,7 +118,7 @@ public class Controlador {
                     case 1 -> new CiudadanoAgua(nombre, nacion, genero, edad, nivelDominio, energia);
                     case 2 -> new CiudadanoTierra(nombre, nacion, genero, edad, nivelDominio, energia);
                     case 3 -> new CiudadanoFuego(nombre, nacion, genero, edad, nivelDominio, energia);
-                    case 4 -> new CiudadanoViento(nombre, nacion, genero, edad, nivelDominio, energia);
+                    case 4 -> new CiudadanoAire(nombre, nacion, genero, edad, nivelDominio, energia);
                     default -> null;
                 };
 
@@ -148,21 +139,18 @@ public class Controlador {
 
     }
 
-    /**
-     * Guarda los personajes del ArrayList de personajes a un archivo de texto
-     * @param rutaArchivo Ruta del archivo en donde se guardará
-     */
     public void guardarPersonajes(String rutaArchivo) {
         try (
-                BufferedWriter escritor = new BufferedWriter(new FileWriter(rutaArchivo, true))
+                BufferedWriter escritor = new BufferedWriter(new FileWriter(rutaArchivo))
         ) {
             for (Personaje personajeActual : personajes) {
+
                 if (personajeActual instanceof MaestroUnElemento maestro) {
                     if (maestro instanceof MaestroTierra) {
                         escritor.write("Maestro,Tierra," + maestro.getNombre() + "," + maestro.getNacion() + "," + maestro.getGenero() + "," +
                                 maestro.getEdad() + ","+ maestro.getEnergia() + "," + maestro.getNivelDeDominio());
                     } else if (maestro instanceof MaestroAire) {
-                        escritor.write("Maestro,Aire," + maestro.getNombre() + "," + maestro.getNacion() + "," + maestro.getGenero() + "," +
+                        escritor.write("Maestro,Viento," + maestro.getNombre() + "," + maestro.getNacion() + "," + maestro.getGenero() + "," +
                                 maestro.getEdad() + ","+ maestro.getEnergia() + "," + maestro.getNivelDeDominio());
                     } else if (maestro instanceof MaestroFuego) {
                         escritor.write("Maestro,Fuego," + maestro.getNombre() + "," + maestro.getNacion() + "," + maestro.getGenero() + "," +
@@ -175,7 +163,6 @@ public class Controlador {
                     escritor.write("Avatar,Todos," + personajeActual.getNombre() + "," + personajeActual.getNacion() + "," + personajeActual.getGenero() + "," +
                             personajeActual.getEdad() + ","+ personajeActual.getEnergia());
                 }else {
-                    // String nombre, String nacion, String genero, int edad, int energia
                     escritor.write("Guerrero," + personajeActual.getNombre() + "," + personajeActual.getNacion() + "," +
                             personajeActual.getGenero() + "," + personajeActual.getEdad() + "," + personajeActual.getEnergia());
                 }
@@ -188,18 +175,17 @@ public class Controlador {
         }
     }
 
-    /**
-     * Abre un archivo de texto y carga los datos que haya en este para convertirlos en personajes
-     * @param rutaArchivo Ruta del archivo donde se va a mover
-     */
     public void abrirArchivoPersonajes(String rutaArchivo) {
         try (BufferedReader lector = new BufferedReader(new FileReader(rutaArchivo))){
+
             String linea;
 
             while ((linea = lector.readLine()) != null) {
                 try {
-
                     String[] datos = linea.split(",");
+
+                    if (datos.length <= 1) continue;
+
                     String tipo = datos[0];
                     if (tipo.trim().equalsIgnoreCase("Maestro")) {
                         String elemento = datos[1].trim();
@@ -216,7 +202,7 @@ public class Controlador {
                             case "Agua" -> new CiudadanoAgua(nombre, nacion, genero, edad, nivelDominio, energia);
                             case "Tierra" -> new CiudadanoTierra(nombre, nacion, genero, edad, nivelDominio, energia);
                             case "Fuego" -> new CiudadanoFuego(nombre, nacion, genero, edad, nivelDominio, energia);
-                            case "Viento" -> new CiudadanoViento(nombre, nacion, genero, edad, nivelDominio, energia);
+                            case "Viento" -> new CiudadanoAire(nombre, nacion, genero, edad, nivelDominio, energia);
                             default -> null;
                         };
 
@@ -262,28 +248,19 @@ public class Controlador {
         } catch (IOException e) {
             vista.mostrarCadena("Error de entrada y salida: " + e.getMessage());
         }
-
     }
 
-    /**
-     * Muestra los personajes que hay dentro del ArrayList de personajes
-     */
     public void mostrarPersonajesCreados() {
         if (personajes.isEmpty()) vista.mostrarCadena("No hay personajes cargados");
         else vista.mostrarPersonajes(personajes);
     }
 
-    /**
-     * Hace que un personaje ataque, esta función se usó para probar el codigo de ataque de cada personaje
-     * @param nombrePersonaje Nombre del personaje que queremos que ataque, necesita estar dentro del ArrayList de personajes
-     */
     public void atacarConUnPersonaje(String nombrePersonaje) {
         Personaje personajeAEncontrar = buscarPersonaje(nombrePersonaje);
         if (personajeAEncontrar == null) {
             vista.mostrarCadena("No se encontró ningun personaje con el nombre " + nombrePersonaje);
             return;
         }
-
 
         if (personajeAEncontrar instanceof MaestroUnElemento maestro) {
             try {
@@ -306,11 +283,6 @@ public class Controlador {
         }
     }
 
-    /**
-     * Busca un personaje en el ArrayList de personajes y muestra su información
-     * @param nombrePersonaje Nombre del personaje a buscar dentro del ArrayList de personajes
-     * @return Instancia del personaje encontrado, si no se encontró, se regresa un null
-     */
     public Personaje buscarPersonaje(String nombrePersonaje) {
         Personaje personajeABuscar = null;
         for (Personaje personajeActual : personajes) {
@@ -321,6 +293,6 @@ public class Controlador {
         }
 
         return personajeABuscar;
-
     }
+
 }

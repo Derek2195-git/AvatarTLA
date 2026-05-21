@@ -47,6 +47,4 @@ public class Vista {
     public void mostrarPersonajes(ArrayList<Personaje> personajes) {
         personajes.forEach(System.out::println);
     }
-
-
 }

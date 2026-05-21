@@ -1,12 +1,14 @@
 package Modelo;
 
-public class CiudadanoViento extends MaestroUnElemento implements MaestroAire {
-    public CiudadanoViento() {
+public class CiudadanoAire extends MaestroUnElemento implements MaestroAire {
+
+    public CiudadanoAire() {
         super("Nomada de viento", "Nomada", "Hombre", 30, true, 5, 50);
 
     }
 
-    public CiudadanoViento(String nombre, String nacion, String genero, int edad, int nivelDominio, int energia) {
+
+    public CiudadanoAire(String nombre, String nacion, String genero, int edad, int nivelDominio, int energia) {
         super(nombre, nacion, genero, edad, true, nivelDominio, energia);
     }
 

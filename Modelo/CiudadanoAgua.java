@@ -1,6 +1,7 @@
 package Modelo;
 
 public class CiudadanoAgua extends MaestroUnElemento implements MaestroAgua {
+
     public CiudadanoAgua() {
         super("Katara", "Agua", "Mujer", 12, true, 4, 70);
 

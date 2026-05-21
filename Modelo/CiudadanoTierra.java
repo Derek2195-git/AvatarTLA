@@ -6,6 +6,7 @@ public class CiudadanoTierra extends MaestroUnElemento implements MaestroTierra{
         super("Toph", "Tierra", "Mujer", 13, true, 7, 60);
     }
 
+
     public CiudadanoTierra(String nombre, String nacion, String genero, int edad, int nivelDominio, int energia) {
         super(nombre, nacion, genero, edad, true, nivelDominio, energia);
     }

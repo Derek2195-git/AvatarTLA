@@ -1,7 +1,6 @@
-import Controlador.Controlador;
-import Modelo.*;
+package Main;
 
-import java.io.*;
+import Controlador.Controlador;
 
 public class Main {
     public static void main(String[] args) {

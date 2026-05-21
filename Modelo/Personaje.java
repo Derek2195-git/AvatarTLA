@@ -8,7 +8,6 @@ public class Personaje {
     protected boolean estaVivo;
     protected int energia;
 
-
     public Personaje(String nombre, String nacion, String genero, int edad, boolean estaVivo, int energia) {
         this.nombre = nombre;
         this.nacion = nacion;
@@ -25,6 +24,7 @@ public class Personaje {
         edad = 21;
         estaVivo = true;
     }
+
 
     public String getNombre() {
         return nombre;
@@ -76,12 +76,7 @@ public class Personaje {
         System.out.println(nombre + " " + nacion);
     }
 
-    // protected String nombre;
-    //    protected String nacion;
-    //    protected String genero;
-    //    protected int edad;
-    //    protected boolean estaVivo;
-    //    protected int energia;
+
     @Override
     public String toString() {
         return  "Nombre:" + nombre + "\n" +

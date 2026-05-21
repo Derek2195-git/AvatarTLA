@@ -1,7 +1,6 @@
 package Modelo;
 
 public abstract class MaestroUnElemento extends Personaje {
-    // Va de 1 a 10
     protected int nivelDeDominio;
 
     public MaestroUnElemento(String nombre, String nacion, String genero, int edad, boolean estaVivo, int nivelDominio, int energia) {
@@ -13,6 +12,7 @@ public abstract class MaestroUnElemento extends Personaje {
         super();
         nivelDeDominio = 1;
     }
+
 
     public abstract void atacar() throws EnergiaInsuficienteException;
 
