@@ -8,15 +8,6 @@ public class Personaje {
     protected boolean estaVivo;
     protected int energia;
 
-    /**
-     * Constructor del personaje
-     * @param nombre Nombre del personaje
-     * @param nacion Nacion de donde proviene el personaje
-     * @param genero Genero del personaje (Si es hombre o mujer)
-     * @param edad Edad del personaje
-     * @param estaVivo Si el personaje esta vivo, siempre se mantiene como verdadero
-     * @param energia Energia actual del personaje
-     */
     public Personaje(String nombre, String nacion, String genero, int edad, boolean estaVivo, int energia) {
         this.nombre = nombre;
         this.nacion = nacion;
@@ -26,9 +17,6 @@ public class Personaje {
         this.energia = energia;
     }
 
-    /**
-     * Por defecto me puse a mi como personaje :D
-     */
     public Personaje() {
         nombre = "Derek";
         nacion = "Aire";
@@ -88,10 +76,7 @@ public class Personaje {
         System.out.println(nombre + " " + nacion);
     }
 
-    /**
-     * Metodo toString de un personaje
-     * @return Retorna la información que contiene el personaje
-     */
+
     @Override
     public String toString() {
         return  "Nombre:" + nombre + "\n" +

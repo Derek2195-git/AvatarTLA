@@ -1,24 +1,14 @@
 package Modelo;
 
-public class CiudadanoViento extends MaestroUnElemento implements MaestroAire {
-    /**
-     * El constructor vacio del maestro crea a un maestro de viento
-     */
-    public CiudadanoViento() {
+public class CiudadanoAire extends MaestroUnElemento implements MaestroAire {
+
+    public CiudadanoAire() {
         super("Nomada de viento", "Nomada", "Hombre", 30, true, 5, 50);
 
     }
 
-    /**
-     * Constructor del personaje
-     * @param nombre Nombre del maestro
-     * @param nacion Nacion de donde proviene el maestro
-     * @param genero Genero del maestro (Si es hombre o mujer)
-     * @param edad Edad del maestro
-     * @param nivelDominio Nivel de dominio de un elemento que posee el maestro
-     * @param energia Energia actual del maestro
-     */
-    public CiudadanoViento(String nombre, String nacion, String genero, int edad, int nivelDominio, int energia) {
+
+    public CiudadanoAire(String nombre, String nacion, String genero, int edad, int nivelDominio, int energia) {
         super(nombre, nacion, genero, edad, true, nivelDominio, energia);
     }
 
